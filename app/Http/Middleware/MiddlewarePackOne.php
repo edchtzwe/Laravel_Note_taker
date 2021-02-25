@@ -15,6 +15,7 @@ class MiddlewarePackOne
      */
     public function handle($request, Closure $next)
     {
+        echo "Middleware Pack One Handler";
         return $next($request);
     }
 }
