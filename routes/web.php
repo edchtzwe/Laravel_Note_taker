@@ -19,3 +19,8 @@ Route::get('PackOne', [
     "middleware" => "MiddlewarePackOne:editor",
     "uses" => "MiddlewareControllerPackOne@index"
 ]);
+
+Route::get('Terminate', [
+    "middleware" => "TerminateMiddleware:editor",
+    "uses" => "TerminateMiddlewareController@index"
+]);
