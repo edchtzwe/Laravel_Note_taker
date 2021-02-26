@@ -15,6 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post("/note/save", [
+    "uses" => "NoteController@save"
+]);
+Route::get("/note", [
+    "uses" => "NoteController@index"
+]);
+Route::get("/note/set_cookie", [
+    "uses" => "NoteController@setCookie"
+]);
+Route::get("/note/get_cookie", [
+    "uses" => "NoteController@getCookie"
+]);
+
+
+// Route::resource("note", "NoteController");
+// Route::get('/note/', function() {
+    // return view("new_entry");
+// });
+
 // Route::get('PackOne', [
     // "middleware" => "MiddlewarePackOne:editor",
     // "uses" => "MiddlewareControllerPackOne@index"
@@ -34,11 +53,3 @@ Route::get('/', function () {
     // "middleware" => "MiddlewarePackOne",
     // "uses" => "UserController@ShowPath"
 // ]);
-
-Route::resource("note", "NoteController");
-// Route::get('/note/', function() {
-    // return view("new_entry");
-// });
-Route::post("/note/save", [
-    "uses" => "NoteController@save"
-]);
