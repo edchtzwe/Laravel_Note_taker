@@ -15,24 +15,30 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('PackOne', [
-    "middleware" => "MiddlewarePackOne:editor",
-    "uses" => "MiddlewareControllerPackOne@index"
-]);
+// Route::get('PackOne', [
+    // "middleware" => "MiddlewarePackOne:editor",
+    // "uses" => "MiddlewareControllerPackOne@index"
+// ]);
 
-Route::get('Terminate', [
-    "middleware" => "TerminateMiddleware:editor",
-    "uses" => "TerminateMiddlewareController@index"
-]);
+// Route::get('Terminate', [
+    // "middleware" => "TerminateMiddleware:editor",
+    // "uses" => "TerminateMiddlewareController@index"
+// ]);
 
-Route::get('Profile', [
-    "middleware" => "auth",
-    "uses" => "UserController@ShowProfile"
-]);
+// Route::get('Profile', [
+    // "middleware" => "auth",
+    // "uses" => "UserController@ShowProfile"
+// ]);
 
-Route::get('/user_controller/path', [
-    "middleware" => "MiddlewarePackOne",
-    "uses" => "UserController@ShowPath"
-]);
+// Route::get('/user_controller/path', [
+    // "middleware" => "MiddlewarePackOne",
+    // "uses" => "UserController@ShowPath"
+// ]);
 
 Route::resource("note", "NoteController");
+// Route::get('/note/', function() {
+    // return view("new_entry");
+// });
+Route::post("/note/save", [
+    "uses" => "NoteController@save"
+]);

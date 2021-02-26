@@ -10,7 +10,7 @@ class NoteController extends Controller
 {
     public function index()
     {
-        echo "<BR>index";
+        return view("new_entry");
     }
 
     public function create()
@@ -35,11 +35,23 @@ class NoteController extends Controller
 
     public function update(Request $request, $id)
     {
-        echo "<BR>update : " . $id;
+        $pattern = $request->is("note/*");
+        if ($pattern) {
+            echo "<BR>update : " . $id;
+        }
+        else {
+            echo "<BR>Cannot update : " . $id;
+        }
     }
 
     public function destroy($id)
     {
         echo "<BR>destroy : " . $id;
+    }
+
+    public function save(Request $request)
+    {
+        $message = $request->input("message");
+        echo "message : " . $message;
     }
 }
