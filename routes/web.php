@@ -28,6 +28,16 @@ Route::get("/note/get_cookie", [
     "uses" => "NoteController@getCookie"
 ]);
 
+Route::get("/set_default_cookies", function() {
+    return response("Theme : Dark", 200)->header("Content-Type", "text/html")->withcookie("theme", "dark");
+});
+
+Route::get("get_settings_as_json", function() {
+    return response()->json([
+        "autosave"    => "Y",
+        "expire_days" => "7",
+    ]);
+});
 
 // Route::resource("note", "NoteController");
 // Route::get('/note/', function() {
