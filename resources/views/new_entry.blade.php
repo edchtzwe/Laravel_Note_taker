@@ -22,25 +22,18 @@
 </div>
 
 <div>
-    <textarea rows="4" cols="50" id="preview" name="preview" ng-bind="preview" disabled="">{{ preview }}</textarea>
-{{ preview }}
+<!-- ng-repeat the message after breaking it down into 10 word blocks for better presentation -->
+    <textarea rows="4" cols="50" id="preview" name="preview" ng-bind="preview" disabled="">@{{ message }}</textarea>
+</div>
+
+<div my-directive>
 </div>
 
 </div>
 
-<script>
-var myApp = angular.module("myApp", []);
-myApp.controller("myController", function($scope) {
-    // $scope.preview = $scope.message;
-    $scope.UpdatePreview = function() {
-        $scope.preview = $scope.message;        
-    };
-});
-</script>
-
-<div>
-    <input type="submit" value="submit"/>
-</div>
+<script src="{{ asset('js/myApp.js') }}"></script>
+<script src="{{ asset('js/myController.js') }}"></script>
+<script src="{{ asset('js/myDirective.js') }}"></script>
 
 </form>
 </section>
