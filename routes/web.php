@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ["as" => "home", function () {
     return view('welcome', ["heading" => "Note Taker App Landing Page"]);
+}]);
+
+Route::get("home", function() {
+    return redirect()->route("home");
 });
 
 Route::post("/note/save", [
@@ -37,6 +41,10 @@ Route::get("get_settings_as_json", function() {
         "autosave"    => "Y",
         "expire_days" => "7",
     ]);
+});
+
+Route::get("/get_all_notes", function() {
+    return view("list_notes");
 });
 
 // Route::resource("note", "NoteController");

@@ -11,7 +11,7 @@ class NoteController extends Controller
 {
     public function index()
     {
-        return view("new_entry");
+        return view("new_entry", ["title" => "Note Taker App"]);
     }
 
     public function save(Request $request)

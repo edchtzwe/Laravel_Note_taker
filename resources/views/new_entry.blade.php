@@ -2,13 +2,12 @@
 <html style="font-size: 16px;">
 
 <head>
-    <title>@yield("title") - Note Entry</title>
+    <title>{{ $title }} - Note Entry</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
 
 <body>
-
 <section>
 <form action="/note/save" method="POST" style="padding: 15px;" name="form">
 
@@ -17,8 +16,7 @@
 <div ng-app="myApp" ng-controller="myController">
 
 <div>
-    <label for="message">Note</label>
-    <textarea rows="4" cols="50" id="message" name="message" ng-model="message" ng-change="UpdatePreview()" required=""></textarea>
+    <textarea placeholder="Enter Your Notes Here..." rows="4" cols="50" id="message" name="message" ng-model="message" ng-change="UpdatePreview()" required=""></textarea>
 </div>
 
 <!-- @verbatim causes all expressions it encloses to NOT be parsed by blade. In our case, Angular.js will take over -->
@@ -34,9 +32,7 @@
 
 </div>
 
-<script src="{{ asset('js/myApp.js') }}"></script>
-<script src="{{ asset('js/myController.js') }}"></script>
-<script src="{{ asset('js/myDirective.js') }}"></script>
+@include("view.script_includes")
 
 </form>
 </section>
