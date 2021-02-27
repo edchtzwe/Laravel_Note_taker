@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ["heading" => "Note Taker App Landing Page"]);
 });
 
 Route::post("/note/save", [

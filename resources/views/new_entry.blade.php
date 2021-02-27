@@ -2,7 +2,7 @@
 <html style="font-size: 16px;">
 
 <head>
-    <title>Note Entry</title>
+    <title>@yield("title") - Note Entry</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
@@ -21,10 +21,13 @@
     <textarea rows="4" cols="50" id="message" name="message" ng-model="message" ng-change="UpdatePreview()" required=""></textarea>
 </div>
 
+<!-- @verbatim causes all expressions it encloses to NOT be parsed by blade. In our case, Angular.js will take over -->
+<!-- @verbatim -->
 <div>
 <!-- ng-repeat the message after breaking it down into 10 word blocks for better presentation -->
     <textarea rows="4" cols="50" id="preview" name="preview" ng-bind="preview" disabled="">@{{ message }}</textarea>
 </div>
+<!-- @endverbatim -->
 
 <div my-directive>
 </div>
