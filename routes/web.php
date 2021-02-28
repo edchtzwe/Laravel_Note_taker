@@ -47,6 +47,10 @@ Route::get("/get_all_notes", function() {
     return view("list_notes");
 });
 
+Route::get("/redirect_new_note", function() {
+    return redirect()->action("NoteController@index");
+});
+
 // Route::resource("note", "NoteController");
 // Route::get('/note/', function() {
     // return view("new_entry");
