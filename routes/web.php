@@ -43,9 +43,14 @@ Route::get("get_settings_as_json", function() {
     ]);
 });
 
-Route::get("/get_all_notes", function() {
-    return view("list_notes");
-});
+Route::get("/get_all_notes", [
+    "uses" => "NoteController@GetAll"
+]);
+
+Route::get("/get_note/id/{id}", [
+    "as"    => "get_note",
+    "uses" => "NoteController@Get"
+]);
 
 Route::get("/redirect_new_note", function() {
     return redirect()->action("NoteController@index");
