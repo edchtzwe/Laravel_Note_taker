@@ -16,6 +16,7 @@ class NoteController extends Controller
         return view("new_entry", ["title" => "Note Taker App"]);
     }
 
+    // start DB methods
     public function save(Request $request)
     {
         $message = $request->input("message");
@@ -23,10 +24,13 @@ class NoteController extends Controller
         return redirect()->route("home");
     }
 
-    // public function edit($id)
-    // {
-        // echo "<BR>edit : " . $id;
-    // }
+    public function SaveEdit(Request $request)
+    {
+        $message = $request->input("message");
+        $id = $request->input("note_id");
+        DB::update("update notes set Message = ? where id = ?", [$message, $id]);
+        return redirect()->route("list_notes");
+    }
 
     public function GetAll()
     {
@@ -41,9 +45,21 @@ class NoteController extends Controller
         $record = $record[0];
         // echo $record->Message;
         $message = $record->Message;
-        return view("view_entry", ["note" => $message]);
+        $id = $record->id;
+        return view("view_entry", ["note" => $message, "id" => $id]);
     }
 
+    public function EditRecord($id)
+    {
+        $record = DB::select("select * from notes where id = ?", [$id]);
+        // echo var_dump($record[0]->Message);
+        $record = $record[0];
+        $message = $record->Message;
+        $id = $record->id;
+        return view("edit_entry", ["note" => $message, "id" => $id]);
+    }
+
+    // end DB methods
 
     public function setCookie(Request $request)
     {
@@ -63,34 +79,4 @@ class NoteController extends Controller
         echo "<BR>and the value of the immortal 'CookieAcceptance' cookie is : " . $value;
     }
 
-    // public function create()
-    // {
-        // echo "<BR>create";
-    // }
-
-    // public function store(Request $request)
-    // {
-        // echo "<BR>store";
-    // }
-
-    // public function show($id)
-    // {
-        // echo "<BR>show : " . $id;
-    // }
-
-    // public function update(Request $request, $id)
-    // {
-        // $pattern = $request->is("note/*");
-        // if ($pattern) {
-            // echo "<BR>update : " . $id;
-        // }
-        // else {
-            // echo "<BR>Cannot update : " . $id;
-        // }
-    // }
-
-    // public function destroy($id)
-    // {
-        // echo "<BR>destroy : " . $id;
-    // }
 }

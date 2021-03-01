@@ -18,6 +18,9 @@
 <div class="justified">
     <textarea rows="25" cols="75" id="preview" name="preview" disabled="">{{ $note }}</textarea>
 </div>
+<div style="text-align: center;">
+<input type="button" value="Edit" onclick="window.location.href = '{{ route('edit_note', ['id' => $id]) }}'">
+</div>
 </section>
 
 </body>
