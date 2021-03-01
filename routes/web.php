@@ -20,7 +20,7 @@ Route::get("home", function() {
 });
 
 Route::post("/note/save", [
-    "uses" => "NoteController@save"
+    "uses" => "NoteController@CreateRecord"
 ]);
 Route::post("/note/save_edit", [
     "uses" => "NoteController@SaveEdit"
