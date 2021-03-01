@@ -22,6 +22,10 @@ Route::get("home", function() {
 Route::post("/note/save", [
     "uses" => "NoteController@save"
 ]);
+Route::post("/note/save_edit", [
+    "uses" => "NoteController@SaveEdit"
+]);
+
 Route::get("/note", [
     "uses" => "NoteController@index"
 ]);
@@ -44,6 +48,7 @@ Route::get("get_settings_as_json", function() {
 });
 
 Route::get("/get_all_notes", [
+    "as"   => "list_notes",
     "uses" => "NoteController@GetAll"
 ]);
 
@@ -52,9 +57,44 @@ Route::get("/get_note/id/{id}", [
     "uses" => "NoteController@Get"
 ]);
 
+Route::get("/edit_note/id/{id}", [
+    "as"    => "edit_note",
+    "uses" => "NoteController@EditRecord"
+]);
+
 Route::get("/redirect_new_note", function() {
     return redirect()->action("NoteController@index");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Route::resource("note", "NoteController");
 // Route::get('/note/', function() {
