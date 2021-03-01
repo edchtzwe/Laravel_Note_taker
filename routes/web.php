@@ -62,6 +62,11 @@ Route::get("/edit_note/id/{id}", [
     "uses" => "NoteController@EditRecord"
 ]);
 
+Route::get("/delete_note/id/{id}", [
+    "as"    => "delete_note",
+    "uses" => "NoteController@DeleteRecord"
+]);
+
 Route::get("/redirect_new_note", function() {
     return redirect()->action("NoteController@index");
 });

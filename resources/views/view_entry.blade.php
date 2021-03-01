@@ -12,7 +12,6 @@
     </style>
 </head>
 
-
 <body>
 <section>
 <div class="justified">
@@ -20,6 +19,7 @@
 </div>
 <div style="text-align: center;">
 <input type="button" value="Edit" onclick="window.location.href = '{{ route('edit_note', ['id' => $id]) }}'">
+<input type="button" value="Delete" onclick="window.location.href = '{{ route('delete_note', ['id' => $id]) }}'">
 </div>
 </section>
 
