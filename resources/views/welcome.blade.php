@@ -29,5 +29,8 @@
     do {!! $stringToBePrintedUnescaped !!}
     --}}
         <H1 style="text-align:center">{{ $heading }}</H1>
+        <DIV style="margin-top:100px; text-align:center;">
+            <input type="button" value="View All" onclick="window.location.href = '{{ route('list_notes') }}'">
+        </DIV>
     </BODY>
 </HTML>

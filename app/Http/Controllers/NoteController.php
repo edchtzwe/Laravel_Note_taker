@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Notes;
 
 class NoteController extends Controller
 {
@@ -15,25 +16,34 @@ class NoteController extends Controller
         return view("new_entry", ["title" => "Note Taker App"]);
     }
 
-    public function save(Request $request)
+    public function CreateRecord(Request $request)
     {
         $message = $request->input("message");
-        DB::insert("insert into notes (message, author) values (?, ?)", [$message, "admin"]);
-        return redirect()->route("home");
+        // DB::insert("insert into notes (message, author) values (?, ?)", [$message, "admin"]);
+        $record = new Notes;
+        $record->Message = $message;
+        $record->Author = "Admin";
+        $record->save();
+        // return redirect()->route("home");
+        return redirect()->route("get_note", $record->id);
     }
 
     public function SaveEdit(Request $request)
     {
         $message = $request->input("message");
         $id = $request->input("note_id");
-        DB::update("update notes set Message = ? where id = ?", [$message, $id]);
+        // DB::update("update notes set Message = ? where id = ?", [$message, $id]);
+        $noteObj = Notes::find($id);
+        $noteObj->Message = $message;
+        $noteObj->save();
         return redirect()->route("list_notes");
     }
 
     public function GetAll()
     {
         // $allRecords = DB::select("select * from notes");
-        $allRecords = DB::table("notes")->get();
+        // $allRecords = DB::table("notes")->get();
+        $allRecords = Notes::get();
         return view("list_notes", ["notes" => $allRecords]);
     }
 
@@ -43,7 +53,8 @@ class NoteController extends Controller
         // $record = $record[0];
         // $record = DB::table("notes")->where("id", $id)->first();
         // ->value(<row_name>) to return the value of a column
-        $record = DB::table("notes")->find($id);
+        // $record = DB::table("notes")->find($id);
+        $record = Notes::find($id);
         $message = $record->Message;
         $id = $record->id;
         return view("view_entry", ["note" => $message, "id" => $id]);
@@ -51,7 +62,9 @@ class NoteController extends Controller
 
     public function DeleteRecord($id)
     {
-        DB::delete("delete from notes where id = ?", [$id]);
+        // DB::delete("delete from notes where id = ?", [$id]);
+        $record = Notes::find($id);
+        $record->delete();
         return $this->GetAll();
     }
 
@@ -75,14 +88,17 @@ class NoteController extends Controller
 
     public function ClearAllNoteMessage()
     {
-        DB::table("notes")->whereNotNull("Message")
-            ->chunkById(100, function($notes) {
-                foreach ($notes as $note) {
-                    DB::table("notes")
-                        ->where("id", $note->id)
-                        ->update(["Message" => ""]);
-                }
-            });
+        // DB::table("notes")->whereNotNull("Message")
+            // ->chunkById(100, function($notes) {
+                // foreach ($notes as $note) {
+                    // DB::table("notes")
+                        // ->where("id", $note->id)
+                        // ->update(["Message" => ""]);
+                // }
+            // });
+
+        Notes::whereNotNull("Message")
+            ->update(["Message" => ""]);
     }
 
     public function setCookie(Request $request)
