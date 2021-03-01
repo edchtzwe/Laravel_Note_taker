@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+// DB facade
+use DB;
 
 class NoteController extends Controller
 {
@@ -17,8 +19,31 @@ class NoteController extends Controller
     public function save(Request $request)
     {
         $message = $request->input("message");
-        echo "message : " . $message;
+        DB::insert("insert into notes (message, author) values (?, ?)", [$message, "admin"]);
+        return redirect()->route("home");
     }
+
+    // public function edit($id)
+    // {
+        // echo "<BR>edit : " . $id;
+    // }
+
+    public function GetAll()
+    {
+        $allRecords = DB::select("select * from notes");
+        return view("list_notes", ["notes" => $allRecords]);
+    }
+
+    public function Get($id)
+    {
+        $record = DB::select("select * from notes where id = ?", [$id]);
+        // echo var_dump($record[0]->Message);
+        $record = $record[0];
+        // echo $record->Message;
+        $message = $record->Message;
+        return view("view_entry", ["note" => $message]);
+    }
+
 
     public function setCookie(Request $request)
     {
@@ -51,11 +76,6 @@ class NoteController extends Controller
     // public function show($id)
     // {
         // echo "<BR>show : " . $id;
-    // }
-
-    // public function edit($id)
-    // {
-        // echo "<BR>edit : " . $id;
     // }
 
     // public function update(Request $request, $id)

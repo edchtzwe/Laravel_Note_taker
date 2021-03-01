@@ -13,7 +13,7 @@
 
     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
 
-<div ng-app="myApp" ng-controller="myController">
+<div ng-app="myApp" ng-controller="myController" style="text-align: center;">
 
 <div>
     <textarea placeholder="Enter Your Notes Here..." rows="4" cols="50" id="message" name="message" ng-model="message" ng-change="UpdatePreview()" required=""></textarea>
