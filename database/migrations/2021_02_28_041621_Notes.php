@@ -15,7 +15,7 @@ class Notes extends Migration
     {
         Schema::create("Notes", function(Blueprint $table) {
             $table->increments("id"); //  id() for Laravel 8.x
-            $table->string("Message");
+            $table->string("Message", 3000);
             $table->string("Author");
             $table->timestamps();
         });
