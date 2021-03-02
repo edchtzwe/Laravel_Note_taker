@@ -7,6 +7,11 @@
         <META name=author content="Edmund Chong">
         <META name=description content="The landing page for the NoteTaker app">
         <META name=keywords content="Note Scratchpad Notepad ">
+        <STYLE>
+            .button {
+                width: 150px;
+            }
+        </STYLE>
     </HEAD>
     <BODY>
     {{--
@@ -30,7 +35,12 @@
     --}}
         <H1 style="text-align:center">{{ $heading }}</H1>
         <DIV style="margin-top:100px; text-align:center;">
-            <input type="button" value="View All" onclick="window.location.href = '{{ route('list_notes') }}'">
+            <DIV>
+                <input class="button" type="button" value="View All" onclick="window.location.href = '{{ route('list_notes') }}'">
+            </DIV>
+            <DIV STYLE="margin-top:5px;">
+                <input class="button" type="button" value="Create New" onclick="window.location.href = '{{ route('create_new') }}'">
+            </DIV>
         </DIV>
     </BODY>
 </HTML>
