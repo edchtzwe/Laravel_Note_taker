@@ -14,10 +14,11 @@
     <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
     <input type="hidden" id="note_id" name="note_id" value="{{ $id }}">
 
-<div ng-app="myApp" ng-controller="myController" style="text-align: center;">
+<div style="text-align: center;" ng-app="">
 
 <div>
-    <textarea rows="4" cols="50" id="message" name="message" required=""></textarea>
+    <textarea ng-show="false" rows="4" cols="50" id="firefox-ta-nofill-bug-fix" name="firefox-ta-nofill-bug-fix">{{ $note }}</textarea>
+    <textarea rows="4" cols="50" id="message" name="message" required="">{{ $note }}</textarea>
 </div>
 
 <div>
