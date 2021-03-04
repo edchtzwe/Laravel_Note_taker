@@ -15,7 +15,7 @@ Route::get('/', ["as" => "home", function () {
     return view('welcome', ["heading" => "Note Taker App Landing Page"]);
 }]);
 
-Route::get("home", function() {
+Route::get("/home", function() {
     return redirect()->route("home");
 });
 
