@@ -2,7 +2,7 @@
 <html style="font-size: 16px;">
 
 <head>
-    <title>{{ $title }} - Note Entry</title>
+    <title>{{ $page_title }} - Note Entry</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
@@ -17,15 +17,20 @@
 <div style="text-align: center;" ng-app="">
 
 <div>
-    <textarea ng-show="false" rows="4" cols="50" id="firefox-ta-nofill-bug-fix" name="firefox-ta-nofill-bug-fix">{{ $note }}</textarea>
-    <textarea rows="4" cols="50" id="message" name="message" required="">{{ $note }}</textarea>
+    <input style="width:75%;" id="title" name="title" placeholder="Note Title..." value="{{ $title }}">
 </div>
 
 <div>
-    <textarea rows="4" cols="50" id="preview" name="preview" disabled="">{{ $note }}</textarea>
+    <textarea ng-show="false" rows="4" cols="50" id="firefox-ta-nofill-bug-fix" name="firefox-ta-nofill-bug-fix">{{ $note }}</textarea>
+
+    <textarea style="width:75%; margin-top:10px;" rows="20" id="message" name="message" required="">{{ $note }}</textarea>
 </div>
 
-<input type="submit" value="Submit"/>
+<div>
+    <textarea style="width:75%; margin-top:10px;" rows="20" id="preview" name="preview" disabled="">{{ $note }}</textarea>
+</div>
+
+<input style="margin-top:10px;" type="submit" value="Submit"/>
 
 </div>
 </form>

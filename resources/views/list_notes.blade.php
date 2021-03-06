@@ -19,11 +19,11 @@
         </SPAN>
         <TABLE style="margin-left:auto; margin-right:auto; border-collapse:collapse;">
             <TR>
-                <TD>ID</TD>
+                <TH>Note Title</TH>
             </TR>
             @foreach ($notes as $note)
             <TR>
-                <TD><a href="{{ route('get_note', ['id' => $note->id]) }}">{{ $note->id }}</a></TD>
+                <TD><a href="{{ route('get_note', ['id' => $note->id]) }}">{{ $note->title }}</a></TD>
             </TR>
             @endforeach
         </TABLE>

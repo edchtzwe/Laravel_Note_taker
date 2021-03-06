@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <HTML>
     <HEAD>
-        <TITLE>{{ $title }} - Index</TITLE>
+        <TITLE>{{ $page_title }} - Index</TITLE>
         <META content="text/html; charset=utf-8" http-equiv=Content-Type>
         <STYLE type=text/css></STYLE>
         <META name=author content="Edmund Chong">
