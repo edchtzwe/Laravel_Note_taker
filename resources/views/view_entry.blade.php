@@ -20,7 +20,7 @@
 </h1>
 
 <div class="justified">
-    <textarea rows="25" cols="75" id="preview" name="preview" disabled="">{{ $note }}</textarea>
+    <textarea style="width:75%;" rows="35" id="preview" name="preview" disabled="">{{ $note }}</textarea>
 </div>
 
 <div style="text-align: center; margin-top:10px;">
