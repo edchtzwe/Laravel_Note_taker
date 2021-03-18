@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->share("page_title", "Note Taker");
+        view()->share("page_heading", "Note Taker App");
     }
 
     /**

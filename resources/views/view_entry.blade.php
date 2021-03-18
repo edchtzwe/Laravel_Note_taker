@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html style="font-size: 16px;">
+@extends('layouts.master')
 
-<head>
-    <title>{{ $page_title }} - Note Entry</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+@section('title')
+    {{ $page_title }} - View Entry
+@stop
+
+@section('styles')
     <style>
         div.justified {
             display : flex;
             justify-content : center;
         }
     </style>
-</head>
+@stop
 
-<body>
+@section('content')
 <section>
 
 <h1 style="text-align:center;">
@@ -30,6 +31,4 @@
 
 </section>
 
-</body>
-
-</html>
+@stop

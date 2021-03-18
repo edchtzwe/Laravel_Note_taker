@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html style="font-size: 16px;">
+@extends('layouts.master')
 
-<head>
-    <title>{{ $page_title }} - Note Entry</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-</head>
+@section('title')
+    {{ $page_title }} - Edit Entry
+@stop
 
-
-<body>
+@section('content')
 <section>
 <form action="/note/save_edit" method="POST" style="padding: 15px;" name="form">
 
@@ -21,7 +18,7 @@
 </div>
 
 <div>
-    <textarea ng-show="false" rows="4" cols="50" id="firefox-ta-nofill-bug-fix" name="firefox-ta-nofill-bug-fix">{{ $note }}</textarea>
+    <textarea ng-show="false" rows="4" cols="50" id="firefox-ta-nofill-bug-fix" name="firefox-ta-nofill-bug-fix"></textarea>
 
     <textarea style="width:75%; margin-top:10px;" rows="20" id="message" name="message" required="" ng-non-bindable>{{ $note }}</textarea>
 </div>
@@ -35,7 +32,4 @@
 </div>
 </form>
 </section>
-
-</body>
-
-</html>
+@stop
