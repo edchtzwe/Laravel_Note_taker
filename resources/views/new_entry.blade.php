@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html style="font-size: 16px;">
+@extends('layouts.master')
 
-<head>
-    <title>{{ $page_title }} - Note Entry</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-</head>
+@section('title')
+    {{ $page_title }} - Add New
+@stop
 
-
-<body>
+@section('content')
 <section>
 <form action="/note/save" method="POST" style="padding: 15px;" name="form">
 
@@ -31,16 +28,13 @@
 </div>
 <!-- @endverbatim -->
 
-<div my-directive>
+<div style="margin-top:10px;" my-directive>
 </div>
 
 </div>
 
-@include("view.script_includes")
+@include("layouts.script_includes")
 
 </form>
 </section>
-
-</body>
-
-</html>
+@stop

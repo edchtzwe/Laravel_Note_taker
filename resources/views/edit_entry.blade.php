@@ -21,7 +21,7 @@
 </div>
 
 <div>
-    <textarea ng-show="false" rows="4" cols="50" id="firefox-ta-nofill-bug-fix" name="firefox-ta-nofill-bug-fix">{{ $note }}</textarea>
+    <textarea ng-show="false" rows="4" cols="50" id="firefox-ta-nofill-bug-fix" name="firefox-ta-nofill-bug-fix"></textarea>
 
     <textarea style="width:75%; margin-top:10px;" rows="20" id="message" name="message" required="" ng-non-bindable>{{ $note }}</textarea>
 </div>

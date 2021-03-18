@@ -12,7 +12,7 @@
 */
 
 Route::get('/', ["as" => "home", function () {
-    return view('welcome', ["heading" => "Note Taker App Landing Page"]);
+    return view('welcome');
 }]);
 
 Route::get("/home", function() {
