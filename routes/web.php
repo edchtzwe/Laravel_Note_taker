@@ -48,7 +48,12 @@ Route::get("get_settings_as_json", function() {
     ]);
 });
 
-Route::get("/get_all_notes", [
+// Route::get("/get_all_notes", [
+    // "as"   => "list_notes",
+    // "uses" => "NoteController@GetAll"
+// ]);
+
+Route::match(array('GET', 'POST'), "/get_all_notes", [
     "as"   => "list_notes",
     "uses" => "NoteController@GetAll"
 ]);

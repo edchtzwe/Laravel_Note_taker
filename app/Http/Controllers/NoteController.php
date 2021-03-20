@@ -52,14 +52,25 @@ class NoteController extends Controller
         return redirect()->route("list_notes");
     }
 
-    public function GetAll()
+    public function GetAll(Request $request)
     {
         // $allRecords = DB::select("select * from notes");
         // $allRecords = DB::table("notes")->get();
 
-        $allRecords = Notes::get();
+        $searchString = $request->input('title');
+        $allRecords = NULL;
+        if (preg_match("/^\S+/", $searchString)) {
+            $allRecords = $this->FindLikeTitle($searchString);
+        }
+        else {
+            $allRecords = Notes::orderBy('title', 'ASC')
+                ->get();
+        }
 
-        return view("list_notes", ["notes" => $allRecords]);
+        return view("list_notes", [
+            "notes"       => $allRecords,
+            "title_filter" => $searchString,
+        ]);
     }
 
     public function Get($id)
@@ -81,6 +92,16 @@ class NoteController extends Controller
             "title" => $title,
             "note"  => $message,
         ]);
+    }
+
+    public function FindLikeTitle($title)
+    {
+        // $result = Notes::where('title', 'like', '%'.$title.'%')
+        $result = Notes::whereRaw('LOWER(`title`) like ?', strtolower('%'.$title.'%'))
+            ->orderBy('title', 'ASC')
+            ->get();
+            // ->toSql();
+        return $result;
     }
 
     public function DeleteRecord($id)
