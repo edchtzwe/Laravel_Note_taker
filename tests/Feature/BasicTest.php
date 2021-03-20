@@ -31,9 +31,7 @@ class BasicTest extends TestCase
     public function testGetList()
     {
         $response = $this->get("/get_all_notes");
-        $response->assertStatus(200);
-        $response->assertSee("All Notes");
-        $response->assertDontSee("List All");
+        $response->assertSee("Search");
     }
 
     public function testCreateNote()
