@@ -19,6 +19,10 @@
             top: 17px;
             margin-bottom:10px;
         }
+
+        body {
+            font-family: "Open Sans", Arial, sans-serif !important;
+        }
     </style>
 </head>
 
