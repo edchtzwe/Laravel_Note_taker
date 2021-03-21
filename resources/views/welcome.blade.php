@@ -19,6 +19,7 @@
     but of course, if you ABSOLUTELY have to print unescaped strings (XSS alert man, beware)
     do {!! $stringToBePrintedUnescaped !!}
     --}}
+
 @section('title')
     {{ $page_title }} - Index
 @stop
@@ -27,9 +28,6 @@
     <DIV style="margin-top:100px; text-align:center;">
         <DIV>
             <input class="button" type="button" value="View All" onclick="window.location.href = '{{ route('list_notes') }}'">
-        </DIV>
-        <DIV STYLE="margin-top:5px;">
-            <input class="button" type="button" value="Create New" onclick="window.location.href = '{{ route('create_new') }}'">
         </DIV>
     </DIV>
 @stop

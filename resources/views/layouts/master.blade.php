@@ -23,11 +23,28 @@
         body {
             font-family: "Open Sans", Arial, sans-serif !important;
         }
+
+		a.banner-logo-link {
+			text-decoration: none;
+			color: inherit;
+		}
     </style>
 </head>
 
 <body>
-    <div class="banner-logo">{{ $page_heading }}</div>
+    <div class="banner-logo" style="float:left;">
+        <a class="banner-logo-link" href="{{ route('home') }}">
+			{{ $page_heading }}
+		</a>
+    </div>
+
+	<div style="float:right;">
+		<a style="display:block; padding:10px;" href="{{ route('create_new') }}">
+			<input type="button" value="Create New" />
+		</a>
+	</div>
+
+	<div style="clear:both;"></div>
     @yield('content')
 </body>
 
