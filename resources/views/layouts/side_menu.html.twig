@@ -1,0 +1,255 @@
+<aside id="sidebar-left" class="sidebar-left">
+    <div class="sidebar-header">
+        <div class="sidebar-title">
+            Navigation
+        </div>
+        <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html"
+             data-fire-event="sidebar-left-toggle">
+            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+        </div>
+    </div>
+
+    <div class="nano has-scrollbar">
+        <div class="nano-content" tabindex="0" style="right: -17px;">
+            <nav id="menu" class="nav-main member-menu" role="navigation">
+
+
+                <ul class="nav nav-main">
+                    <li>
+                        <a href="{{ path('frontend_dashboard') }}">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li id="orderSideMenu" class="nav-parent">
+                        <a>
+                            <i class="fa fa-copy" aria-hidden="true"></i>
+                            <span>Orders</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a href="{{ path('frontend_member_home') }}">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <span>My Orders</span>
+                                </a>
+                            </li>
+                            <li class="nav-parent nav-expanded">
+                                <a>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <span>Create New Order</span>
+                                </a>
+                                <ul class="nav nav-children">
+                                    <li>
+                                        <a href="{{ path('frontend_order_product',{'type':'company'}) }}">
+                                            Company
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ path('frontend_order_product',{'type':'smsf'}) }}">
+                                            SMSF
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ path('frontend_order_product',{'type':'trust'}) }}">
+                                            Trust
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ path('frontend_order_product',{'type':'other'}) }}">
+                                            Other
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('frontend_cart') }}">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    <span>Cart</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-parent">
+                        <a>
+                            <i class="fa fa-briefcase" aria-hidden="true"></i>
+                            <span>Legal structures</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li class="nav-parent">
+                                <a>
+                                    <i class="fa fa-building" aria-hidden="true"></i>
+                                    <span>Company</span>
+                                </a>
+                                <ul class="nav nav-children">
+                                    <li>
+                                        <a href="{{ path('frontend_member_product',{'type':'company'}) }}">
+                                            My Companies
+                                        </a>
+                                    </li>
+                                    {% if settings('company.cc.enabled') or app.user.id~"" in settings_to_array('company.cc.beta.ids.csv') %}
+                                        <li class="nav-parent">
+                                            <a>
+                                                Corporate Compliance
+                                            </a>
+                                            <ul class="nav nav-children">
+                                                <li>
+                                                    <a href="{{ path('frontend_agent_profile') }}">
+                                                        Agent
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('frontend_agent_companies') }}">
+                                                        Manage Agent Companies
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                            <li class="nav-parent">
+                                <a>
+                                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                                    <span>Trust</span>
+                                </a>
+                                <ul class="nav nav-children">
+                                    <li>
+                                        <a href="{{ path('frontend_member_product',{'type':'trust'}) }}">
+                                            My Trusts
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-parent">
+                                <a>
+                                    <i class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></i>
+                                    <span>SMSF</span>
+                                </a>
+                                <ul class="nav nav-children">
+                                    <li>
+                                        <a href="{{ path('frontend_member_product',{'type':'smsf'}) }}">
+                                            My SMSFs
+                                        </a>
+                                    </li>
+
+                                    {% if settings('smsf_update_subscription.enabled') %}
+                                    <li>
+                                        <a href="{{ path('frontend_member_deed_leader') }}">
+                                            SMSF Update
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                            <li class="nav-parent">
+                                <a>
+                                    <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                                    <span>Other</span>
+                                </a>
+                                <ul class="nav nav-children">
+                                    <li>
+                                        <a href="{{ path('frontend_member_product',{'type':'other'}) }}">
+                                            My Other Structures
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-parent">
+                        <a>
+                            <i class="fa fa-dollar" aria-hidden="true"></i>
+                            <span>Payments</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a href="{{ path('frontend_member_invoices') }}">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <span>Invoices</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('frontend_member_payment_history') }}">
+                                    <i class="fa fa-history" aria-hidden="true"></i>
+                                    <span>Payment History</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('frontend_member_statement') }}">
+                                    <i class="fa fa-file-text" aria-hidden="true"></i>
+                                    <span>Statements</span>
+                                </a>
+                            </li>
+
+
+                            {% if settings('establishment_subscription.enabled') %}
+                            <li>
+                                <a href="{{ path('frontend_subscription') }}">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    <span>Establishment Subscription</span>
+                                </a>
+                            </li>
+                            {% endif %}
+
+                            {% if settings('establishment_subscription.enabled') or settings('smsf_update_subscription.enabled') %}
+                            <li>
+                                <a href="{{ path('frontend_member_direct_debit') }}">
+                                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                    <span>Direct Debit</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-parent">
+                        <a>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <span>Contacts</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a href="{{ path('frontend_member_clients') }}">
+                                    <span>My Clients</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ path('frontend_member_people') }}">
+                                    <span>My People</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% if settings('company.cc.enabled') or app.user.id~"" in settings_to_array('company.cc.beta.ids.csv') %}
+                        <li>
+                            <a href="{{ path('frontend_agent_companies') }}">
+                                <i class="fa fa-building" aria-hidden="true"></i>
+                                <span>Corporate Compliance</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {{ render(controller(
+                'InterpracCorporateFrontendBundle:Account:debtorNotification'
+            )) }}
+        </div>
+
+        <div class="nano-pane" style="opacity: 1; visibility: visible;">
+            <div class="nano-slider" style="height: 109px; transform: translate(0px, 0px);"></div>
+        </div>
+    </div>
+</aside>
