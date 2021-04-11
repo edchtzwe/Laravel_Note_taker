@@ -34,13 +34,6 @@ class BasicTest extends TestCase
         $response->assertSee("Search");
     }
 
-    public function searchList()
-    {
-        $response = $this->post("/get_all_notes", ['title' => 'FEATURE TEST']);
-
-        return $response;
-    }
-
     public function testCRUD()
     {
         // Create
@@ -63,6 +56,10 @@ class BasicTest extends TestCase
         $response = $this->searchList();
         $response->assertSee("FEATURE TEST");
 
+        // assert that we can get to the edit form without issues
+        $response = $this->editNoteForm($id);
+        $response->assertStatus(200);
+        $response->assertSee("FEATURE TEST");
         // Update
         $response = $this->updateNote($id);
         $response->assertStatus(302);
@@ -77,6 +74,20 @@ class BasicTest extends TestCase
         $response = $this->get("/get_all_notes");
         $response->assertStatus(200);
         $response->assertDontSee("FEATURE TEST");
+    }
+
+    public function searchList()
+    {
+        $response = $this->post("/get_all_notes", ['title' => 'FEATURE TEST']);
+
+        return $response;
+    }
+
+    public function editNoteForm($id)
+    {
+        $response = $this->get("/edit_note/id/".$id);
+
+        return $response;
     }
 
     public function createNote()
