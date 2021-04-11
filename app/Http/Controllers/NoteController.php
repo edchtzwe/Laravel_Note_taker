@@ -49,7 +49,7 @@ class NoteController extends Controller
 
         $noteObj->save();
 
-        return redirect()->route("list_notes");
+        return redirect()->route("get_note", ['id' => $id]);
     }
 
     public function GetAll(Request $request)
@@ -68,7 +68,7 @@ class NoteController extends Controller
         }
 
         return view("list_notes", [
-            "notes"       => $allRecords,
+            "notes"        => $allRecords,
             "title_filter" => $searchString,
         ]);
     }
@@ -112,7 +112,7 @@ class NoteController extends Controller
 
         $record->delete();
 
-        return $this->GetAll();
+        return redirect()->route("list_notes");
     }
 
     public function EditRecord($id)

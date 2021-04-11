@@ -20,11 +20,7 @@
 <div>
     <textarea ng-show="false" rows="4" cols="50" id="firefox-ta-nofill-bug-fix" name="firefox-ta-nofill-bug-fix"></textarea>
 
-    <textarea style="width:75%; margin-top:10px;" rows="20" id="message" name="message" required="" ng-non-bindable>{{ $note }}</textarea>
-</div>
-
-<div>
-    <textarea style="width:75%; margin-top:10px;" rows="20" id="preview" name="preview" disabled="" ng-non-bindable>{{ $note }}</textarea>
+    <textarea style="width:75%; margin-top:10px;" rows="35" id="message" name="message" required="" ng-non-bindable>{{ $note }}</textarea>
 </div>
 
 <input style="margin-top:10px;" type="submit" value="Submit"/>
